@@ -1,3 +1,5 @@
+console.log(`Using environment config: '${process.env.NODE_ENV}'`);
+
 require("dotenv").config({
   path: `.env.development`,
 })
