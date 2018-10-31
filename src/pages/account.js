@@ -8,10 +8,10 @@ import Header from '../components/Header'
 import NavAccount from '../components/NavAccount'
 import pic01 from '../assets/images/pic01.jpg'
 import { ACCOUNT_PAGE } from '../components/localization/localization';
-import * as firebase from 'firebase';
+var firebase = require('firebase')
 import FileUploader from "react-firebase-file-uploader";
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
-
+import 'firebase/storage';
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,

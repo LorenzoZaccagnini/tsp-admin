@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Hunter Chang",
   "dependencies": {
-    "firebase": "^5.5.6",
+    "firebase": "4.12.0",
     "gatsby": "^2.0.0",
     "gatsby-plugin-manifest": "^2.0.2",
     "gatsby-plugin-offline": "^2.0.5",
@@ -19,7 +19,8 @@
     "react-helmet": "^5.2.0",
     "react-scroll-to-element": "^0.2.0",
     "react-scrollspy": "^3.3.5",
-    "react-waypoint": "^8.0.3"
+    "react-waypoint": "^8.0.3",
+    "whatwg-fetch": "2.0.4"
   },
   "keywords": [
     "gatsby"
