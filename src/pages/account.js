@@ -12,6 +12,8 @@ var firebase = require('firebase')
 import FileUploader from "react-firebase-file-uploader";
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
 import 'firebase/storage';
+import 'firebase/auth';
+import 'firebase/database';
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
