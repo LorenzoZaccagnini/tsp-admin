@@ -2,16 +2,18 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Waypoint from 'react-waypoint'
-import FileUploader from "react-firebase-file-uploader";
-import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
-import 'firebase/storage';
 
 import Layout from '../components/layoutAuth'
 import Header from '../components/Header'
 import NavAccount from '../components/NavAccount'
 import pic01 from '../assets/images/pic01.jpg'
 import { ACCOUNT_PAGE } from '../components/localization/localization';
-var firebase = require('firebase')
+import FileUploader from "react-firebase-file-uploader";
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
+import  firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/storage';
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,

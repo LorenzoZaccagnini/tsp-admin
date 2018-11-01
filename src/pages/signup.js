@@ -7,7 +7,9 @@ import pic04 from '../assets/images/pic04.jpg'
 import { auth } from '../components/firebase';
 import { ACCOUNT_PAGE, SIGNUP_PAGE } from '../components/localization/localization';
 import { navigate } from "gatsby"
-import * as firebase from 'firebase';
+import  firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/storage';
 
 
 class Generic extends React.Component {

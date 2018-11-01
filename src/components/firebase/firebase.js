@@ -1,4 +1,8 @@
-var firebase = require('firebase')
+import  firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/storage';
+
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -11,5 +15,12 @@ const config = {
 
   firebase.initializeApp(config);
 
-export const auth = firebase.auth();
-export const db = firebase.database();
+let db, auth, storage;
+
+if(typeof window !== "undefined") {
+  db = firebase.database();
+  auth = firebase.auth();
+  storage = firebase.storage();
+}
+
+  export { db, auth, storage };
