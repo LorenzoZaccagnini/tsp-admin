@@ -264,7 +264,7 @@ class Index extends React.Component {
                 onProgress={this.handleProgress}
                 style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, textAlign: 'center', width: '200px'}}
               >
-                Cambia {this.state.progress}
+                Cambia
               </CustomUploadButton>
               </div>
             </div>
