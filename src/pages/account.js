@@ -212,7 +212,8 @@ class Index extends React.Component {
                   onChange={event => this.setState(byPropKey('title', event.target.value))}
                   type="text"
                   className="title_input"
-                  placeholder='Titolo di studio o professione'
+                  placeholder='Titolo corto di studio o professione'
+                  maxLength="30"
                 />
                 </header>
                 <div className="name_input_container">

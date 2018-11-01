@@ -143,7 +143,8 @@ class SignUpForm extends React.Component {
             value={title}
             onChange={event => this.setState(byPropKey('title', event.target.value))}
             type="text"
-            placeholder="Titolo di studio o professione"
+            placeholder="Titolo corto di studio o professione"
+            maxLength="30"
           />
           <textarea
             value={bio}
