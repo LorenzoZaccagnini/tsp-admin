@@ -4,13 +4,11 @@ import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import HeaderGeneric from '../components/HeaderGeneric'
 import pic04 from '../assets/images/pic04.jpg'
-import { auth } from '../components/firebase';
 import { ACCOUNT_PAGE, SIGNUP_PAGE } from '../components/localization/localization';
 import { navigate } from "gatsby"
+import { auth } from '../components/firebase'
 import  firebase from 'firebase/app';
 import 'firebase/database';
-import 'firebase/storage';
-
 
 class Generic extends React.Component {
   render() {
@@ -54,6 +52,8 @@ class SignUpForm extends React.Component {
   }
 
   onSubmit = (event) => {
+    event.preventDefault();
+
       const {
         name,
         lastname,
@@ -67,18 +67,17 @@ class SignUpForm extends React.Component {
       auth.doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser => {
           this.setState({ ...INITIAL_STATE });
-          this.setState({myuid: authUser.user.uid})
-          console.log(authUser.user.uid);
+          console.log('my user obj', authUser);
+          this.setState({myuid: authUser.uid})
           auth.doSignInWithEmailAndPassword(email, passwordOne).then( res => {
-            console.log('this is my res: ', res);
             firebase.database()
-            .ref(`users/${authUser.user.uid}`).set({
+            .ref(`users/${authUser.uid}`).set({
               name,
               lastname,
               title,
               bio,
               linkedin,
-              avatarURL: 'https://pasteboard.co/HL3BYnv.jpg',
+              avatarURL: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
               public: false
             })
             .then(_ => {
@@ -93,7 +92,7 @@ class SignUpForm extends React.Component {
           this.setState(byPropKey('error', error));
         });
 
-      event.preventDefault();
+        event.stopPropagation();
     }
 
   render() {

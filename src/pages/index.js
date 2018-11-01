@@ -5,8 +5,7 @@ import { navigate } from "gatsby"
 import Layout from '../components/layout'
 import HeaderGeneric from '../components/HeaderGeneric'
 import pic04 from '../assets/images/pic04.jpg'
-import { auth } from '../components/firebase';
-
+import { auth } from '../components/firebase'
 class Generic extends React.Component {
   render() {
 
@@ -43,6 +42,8 @@ class SignInForm extends React.Component {
   }
 
   onSubmit = (event) => {
+    event.preventDefault();
+
     const {
       email,
       password,
@@ -54,7 +55,6 @@ class SignInForm extends React.Component {
 
     auth.doSignInWithEmailAndPassword(email, password)
       .then((res) => {
-        console.log(res.user.uid);
         this.setState({ ...INITIAL_STATE });
         console.log('success');
         navigate('/account')
@@ -62,8 +62,8 @@ class SignInForm extends React.Component {
       .catch(error => {
         this.setState(byPropKey('error', error));
       });
+      event.stopPropagation();
 
-    event.preventDefault();
   }
 
   render() {

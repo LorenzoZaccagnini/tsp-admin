@@ -1,5 +1,5 @@
 import {
-  auth, db
+  auth
 } from './firebase';
 
 // Sign Up
