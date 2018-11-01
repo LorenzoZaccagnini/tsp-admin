@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { navigate } from "gatsby"
+import { Link, navigate } from "gatsby"
 
 import Layout from '../components/layout'
 import HeaderGeneric from '../components/HeaderGeneric'
@@ -17,6 +17,7 @@ class Generic extends React.Component {
           <section id="content" className="main">
             <h2>Login</h2>
             <SignInForm />
+            <Link to="/signup" >Clicca qui per registrarti</Link>
           </section>
         </div>
       </Layout>
