@@ -96,7 +96,7 @@ class Index extends React.Component {
       } = this.state;
 
             firebase.database()
-            .ref(`users/${this.state.uid}`).set({
+            .ref(`users/${this.state.uid}`).update({
               name,
               lastname,
               title,
