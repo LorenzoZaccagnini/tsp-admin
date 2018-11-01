@@ -91,7 +91,7 @@ class SignInForm extends React.Component {
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit" className="button">
+        <button disabled={isInvalid} type="submit" className="button fix-button">
           Login
         </button>
 
