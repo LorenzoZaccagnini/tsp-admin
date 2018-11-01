@@ -34,7 +34,8 @@ const INITIAL_STATE = {
   isUploading: false,
   progress: 0,
   avatar: null,
-  avatarURL: pic01
+  avatarURL: pic01,
+  approved: false
 };
 
 class Index extends React.Component {
@@ -62,7 +63,8 @@ class Index extends React.Component {
             bio: userTempInfo.bio,
             linkedin: userTempInfo.linkedin,
             public: userTempInfo.public,
-            avatarURL: userTempInfo.avatarURL
+            avatarURL: userTempInfo.avatarURL,
+            approved: userTempInfo.approved
           })
             console.log(info.val());
             console.log(this.state.uid);
@@ -164,6 +166,7 @@ class Index extends React.Component {
       linkedin,
       avatarURL,
       error,
+      approved
     } = this.state;
 
     const isInvalid =
@@ -179,7 +182,7 @@ class Index extends React.Component {
 
         <div>
 
-        <Helmet title="Gatsby Starter - Stellar" />
+        <Helmet title="Il tuo account" />
         { this.state.lastname != null &&
         <Header title={'Ciao ' + this.state.name } desc="Utilizza questa pagina per modificare la tua biografia o cambiare la foto" />
         }
@@ -211,7 +214,7 @@ class Index extends React.Component {
                 />
                 </header>
                 <div className="name_input_container">
-                <p className="label">Ti ricordi come ti chiami</p>
+                <p className="label">Il tuo profilo {this.state.approved && 'è stato approvato'} {!this.state.public && 'non è ancora stato approvato'}</p>
 
                 <input
                   value={name}
@@ -227,6 +230,7 @@ class Index extends React.Component {
                   className="account_input"
                   placeholder="Cognome"
                 />
+
                 <p className="label">La tua biografia</p>
                 <textarea
                   value={bio}
