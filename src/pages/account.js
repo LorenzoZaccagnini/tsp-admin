@@ -92,6 +92,7 @@ class Index extends React.Component {
         bio,
         linkedin,
         passwordOne,
+        avatarURL
       } = this.state;
 
             firebase.database()
@@ -100,7 +101,8 @@ class Index extends React.Component {
               lastname,
               title,
               bio,
-              linkedin
+              linkedin,
+              avatarURL
             })
             .then(_ => {
               console.log('success bio');
