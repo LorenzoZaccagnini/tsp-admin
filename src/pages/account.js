@@ -251,7 +251,7 @@ class Index extends React.Component {
                 />
                 <ul className="actions">
                   <li>
-                  <button type="submit"  disabled={isInvalid} className="button fix-button">
+                  <button type="submit"  disabled={isInvalid} className="bluebtn button fix-button">
                   Salva</button></li>
                 </ul>
                 { this.state.error && <p>{this.state.error.message}</p> }

@@ -15,7 +15,21 @@
 		input,
 		textarea {
 			margin-bottom: 20px;
+
+
 		}
+		textarea::placeholder, input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #2b2b2b !important;
+    opacity: 1; /* Firefox */
+}
+
+textarea::placeholder, input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #2b2b2b;
+}
+
+textarea::placeholder, input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #2b2b2b;
+}
 
 		.title_input{
 			background-color: white;
