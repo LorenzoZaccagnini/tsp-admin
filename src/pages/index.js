@@ -35,7 +35,7 @@ class Index extends React.Component {
       <Layout>
         <Helmet title="Progetto supporto Adolescenti" />
 
-        <Header />
+        <Header title="Area Riservata" desc="Piattaforma riservata ai collaboratori"/>
 
         <Waypoint
           onEnter={this._handleWaypointEnter}
