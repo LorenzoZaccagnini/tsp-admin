@@ -1,105 +1,126 @@
 import React from 'react'
+import { Link, navigate} from 'gatsby'
 import Helmet from 'react-helmet'
-import { Link, navigate } from "gatsby"
+import Waypoint from 'react-waypoint'
 
 import Layout from '../components/layout'
-import HeaderGeneric from '../components/HeaderGeneric'
-import pic04 from '../assets/images/pic04.jpg'
-import { auth } from '../components/firebase'
-class Generic extends React.Component {
+import Header from '../components/Header'
+import NavIndex from '../components/NavIndex'
+import pic01 from '../assets/images/pic01.jpg'
+
+
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      stickyNav: false
+    }
+  }
+
+  componentDidMount () {
+
+  }
+
+  _handleWaypointEnter= () => {
+    this.setState(() => ({ stickyNav: false }));
+  }
+
+  _handleWaypointLeave = () => {
+    this.setState(() => ({ stickyNav: true }));
+  }
+
   render() {
 
     return (
       <Layout>
-        <Helmet title="Login" />
-        <HeaderGeneric title="Login" desc="Autenticati per proseguire"/>
+        <Helmet title="Progetto supporto Adolescenti" />
+
+        <Header />
+
+        <Waypoint
+          onEnter={this._handleWaypointEnter}
+          onLeave={this._handleWaypointLeave}
+        >
+        </Waypoint>
+        <NavIndex sticky={this.state.stickyNav} />
+
         <div id="main">
-          <section id="content" className="main">
-            <h2>Login</h2>
-            <SignInForm />
-            <Link to="/signup" >Clicca qui per registrarti</Link>
+
+          <section id="intro" className="main">
+            <div className="spotlight">
+              <div className="content">
+                <header className="major">
+                  <h2>Progetto supporto adolescenti</h2>
+                </header>
+                <p>Degli adolescenti pongono delle domande in totale anonimato, delle persone qualificate in psicologia o medicina rispondono alle loro domande. Una domanda corrisponde ad una risposta.
+                Il tutto viene gestito completamente da remoto ed in maniera asincrona, senza limiti fisici o di tempo, dai il tuo aiuto quando vuoi dove vuoi :)</p>
+              </div>
+            </div>
           </section>
+
+          <section id="first" className="main special">
+          <div className="spotlight">
+            <div className="content">
+              <header className="major">
+                <h2>Accedi</h2>
+              </header>
+              <p>Autenticati per accedere alle funzioni della piattaforma</p>
+              <ul className="actions">
+                <li><Link to="/login" className="button">Accedi</Link></li>
+              </ul>
+            </div>
+          </div>
+          </section>
+
+          <section id="second" className="main special">
+          <div className="spotlight">
+            <div className="content">
+              <header className="major">
+                <h2>Registrati</h2>
+              </header>
+              <p>Entra a far parte del nostro progetto</p>
+              <ul className="actions">
+                <li><Link to="/signup" className="button">Registrati</Link></li>
+              </ul>
+            </div>
+          </div>
+          </section>
+
+          <section id="cta" className="main special">
+            <header className="major">
+              <h2>Contattaci</h2>
+              <p>Ti risponderemo appena possibile</p>
+            </header>
+            <div className="inner">
+                        <section>
+                        <form name="contact" method="post" action="/success" data-netlify="true" data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="bot-field" />
+                                <div className="field half first">
+                                    <label htmlFor="name">Nome</label>
+                                    <input type="text" name="name" id="name" />
+                                </div>
+                                <div className="field half">
+                                    <label htmlFor="email">Email</label>
+                                    <input type="text" name="email" id="email" />
+                                </div>
+                                <div className="field">
+                                    <label htmlFor="message">Messaggio</label>
+                                    <textarea name="message" id="message" rows="6"></textarea>
+                                </div>
+                                <ul className="actions">
+                                    <li><input type="submit" value="Invia" className="special" /></li>
+                                    <li><input type="reset" value="Reset" /></li>
+                                </ul>
+                            </form>
+                        </section>
+                    </div>
+          </section>
+
         </div>
+
       </Layout>
     )
   }
 }
 
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
-
-const INITIAL_STATE = {
-  email: '',
-  password: '',
-  error: null,
-};
-
-class SignInForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { ...INITIAL_STATE };
-  }
-
-  onSubmit = (event) => {
-    event.preventDefault();
-
-    const {
-      email,
-      password,
-    } = this.state;
-
-    const {
-      history,
-    } = this.props;
-
-    auth.doSignInWithEmailAndPassword(email, password)
-      .then((res) => {
-        this.setState({ ...INITIAL_STATE });
-        console.log('success');
-        navigate('/account')
-      })
-      .catch(error => {
-        this.setState(byPropKey('error', error));
-      });
-      event.stopPropagation();
-
-  }
-
-  render() {
-    const {
-      email,
-      password,
-      error,
-    } = this.state;
-
-    const isInvalid =
-      password === '' ||
-      email === '';
-
-    return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={password}
-          onChange={event => this.setState(byPropKey('password', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit" className="button fix-button">
-          Login
-        </button>
-
-        { error && <p>{error.message}</p> }
-      </form>
-    );
-  }
-}
-
-export default Generic
+export default Index
