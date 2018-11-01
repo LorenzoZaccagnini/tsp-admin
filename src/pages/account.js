@@ -216,7 +216,7 @@ class Index extends React.Component {
                 />
                 </header>
                 <div className="name_input_container">
-                <p className="label">Il tuo profilo {this.state.approved && 'è stato approvato'} {!this.state.public && 'non è ancora stato approvato'}</p>
+                <p className="label">Il tuo profilo {this.state.approved && 'è stato approvato'} {!this.state.approved && 'non è ancora stato approvato'}</p>
 
                 <input
                   value={name}
