@@ -9,3 +9,4 @@ yarn.lock
 # Build directory
 /public
 .DS_Store
+/src/pages/manage.js

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Waypoint from 'react-waypoint'
+import Modal from 'react-modal';
 
 import Layout from '../components/layoutAuth'
 import Header from '../components/Header'
@@ -19,6 +20,18 @@ const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
 });
 
+const customStyles = {
+  content : {
+    top                   : '50%',
+    backgroundColor       : 'steelblue',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+  }
+};
+
 const INITIAL_STATE = {
   uid: null,
   authUser: null,
@@ -35,7 +48,8 @@ const INITIAL_STATE = {
   progress: 0,
   avatar: null,
   avatarURL: pic01,
-  approved: false
+  approved: false,
+  modalIsOpen: false,
 };
 
 class Index extends React.Component {
@@ -43,6 +57,9 @@ class Index extends React.Component {
     super(props);
     this.state = { ...INITIAL_STATE };
     this.changeVisibility = this.changeVisibility.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount () {
@@ -106,12 +123,26 @@ class Index extends React.Component {
             })
             .then(_ => {
               console.log('success bio');
+              this.setState({modalIsOpen: true});
             })
             .catch(error => {
               this.setState(byPropKey('error', error));
             });
             event.stopPropagation();
     }
+
+    openModal() {
+  this.setState({modalIsOpen: true});
+}
+
+afterOpenModal() {
+  // references are now sync'd and can be accessed.
+  this.subtitle.style.color = '#f00';
+}
+
+closeModal() {
+  this.setState({modalIsOpen: false});
+}
 
   handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
   handleProgress = progress => this.setState({ progress });
@@ -181,7 +212,20 @@ class Index extends React.Component {
     return (
 
       <Layout reqAuth="true">
+      <Modal
+                 isOpen={this.state.modalIsOpen}
+                 onAfterOpen={this.afterOpenModal}
+                 onRequestClose={this.closeModal}
+                 style={customStyles}
+                 contentLabel="Successo"
+               >
 
+                <div className="modal_success">
+                 <h2 className="modal_title" ref={subtitle => this.subtitle = subtitle}>Successo</h2>
+                 <button
+                 onClick={this.closeModal}>OK</button>
+                 </div>
+        </Modal>
         <div>
 
         <Helmet title="Il tuo account" />
@@ -237,7 +281,7 @@ class Index extends React.Component {
                 <p className="label">La tua biografia</p>
                 <textarea
                   value={bio}
-                  onChange={event => this.setState(byPropKey('email', event.target.value))}
+                  onChange={event => this.setState(byPropKey('bio', event.target.value))}
                   type="text"
                   placeholder= {ACCOUNT_PAGE.it.bio_placeholder}
                 />

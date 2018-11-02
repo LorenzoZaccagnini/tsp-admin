@@ -4,9 +4,45 @@
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 /* Main */
+
+.modal_success {
+	h2 {
+		color: white !important;
+
+	}
+}
+
 #main {
 	@include color(invert);
 	border-radius: _size(border-radius-main);
+
+
+
+	.manage_team_box {
+		border: 1px solid #9F9F9F;
+		border-radius: 10px;
+		padding: 10px;
+		margin-bottom: 10px;
+		color: black;
+		.image_box {
+			img {
+				width: 100px;
+				border-radius: 50%;
+			}
+		}
+				.btn_approve {
+					border: none;
+					background-color: steelblue;
+					width: 100px;
+					text-align: center;
+					font-size: 0.8em;
+					color: white !important;
+					font-weight: bold;
+					border-radius: 10px;
+					margin-top: 10px;
+				}
+
+	}
 
 	> .main {
 		@include padding(5em, 5em);
