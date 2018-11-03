@@ -3,7 +3,8 @@ import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import HeaderGeneric from '../components/HeaderGeneric'
 import pic04 from '../assets/images/pic04.jpg'
-import  firebase from 'firebase';
+import { db } from '../components/firebase/firebase'
+
 
 class Team extends React.Component {
 
@@ -21,7 +22,7 @@ class Team extends React.Component {
   }
 
   loadTeam = () => {
-    firebase.database().ref("users")
+    db.ref("users")
     .orderByChild('public').equalTo(true)
     .once('value')
     .then(snapshot => {
