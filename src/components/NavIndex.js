@@ -21,6 +21,11 @@ const NavIndex = (props) => (
                 </Scroll>
             </li>
             <li>
+                <Scroll type="id" element="team">
+                    <a href="#">Team</a>
+                </Scroll>
+            </li>
+            <li>
                 <Scroll type="id" element="cta">
                     <a href="#">Contattaci</a>
                 </Scroll>

@@ -85,6 +85,19 @@ class Index extends React.Component {
             </div>
           </div>
           </section>
+          <section id="team" className="main special">
+          <div className="spotlight">
+            <div className="content">
+              <header className="major">
+                <h2>Chi siamo</h2>
+              </header>
+              <p>Un team pieno di persone qualificate e volentore</p>
+              <ul className="actions">
+                <li><Link to="/team" className="button">Vai al Team</Link></li>
+              </ul>
+            </div>
+          </div>
+          </section>
 
           <section id="cta" className="main special">
             <header className="major">
