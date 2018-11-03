@@ -91,7 +91,7 @@ class Index extends React.Component {
               <header className="major">
                 <h2>Chi siamo</h2>
               </header>
-              <p>Un team pieno di persone qualificate e volentore</p>
+              <p>Un team pieno di persone qualificate e volenterose</p>
               <ul className="actions">
                 <li><Link to="/team" className="button">Vai al Team</Link></li>
               </ul>
