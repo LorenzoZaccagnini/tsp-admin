@@ -4,9 +4,7 @@ import Layout from '../components/layout'
 import HeaderGeneric from '../components/HeaderGeneric'
 import pic04 from '../assets/images/pic04.jpg'
 import  firebase from 'firebase/app';
-import 'firebase/auth';
 import 'firebase/database';
-import 'firebase/storage';
 
 class Team extends React.Component {
 
