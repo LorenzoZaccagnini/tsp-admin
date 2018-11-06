@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import HeaderGeneric from '../components/HeaderGeneric'
 import pic04 from '../assets/images/pic04.jpg'
+import loadingGif from '../assets/images/loading.gif'
 import { db } from '../components/firebase/firebase'
 
 
@@ -12,6 +13,7 @@ class Team extends React.Component {
   super(props);
   this.state = {
     team: [],
+    loading: true
   }
   this.loadTeam = this.loadTeam.bind(this)
 
@@ -35,7 +37,8 @@ class Team extends React.Component {
         }
       }
       this.setState({
-        team: list
+        team: list,
+        loading: false
       })
     })
   }
@@ -49,6 +52,11 @@ class Team extends React.Component {
         <HeaderGeneric title="Chi siamo" desc="Qualificati e volenterosi"/>
         <div id="main">
           <section id="content" className="main">
+            {this.state.loading &&
+              <div align="center">
+              <img src={loadingGif} />
+              </div>
+            }
             {this.state.team != [] &&
             <div>
             {this.state.team.map( el  =>
