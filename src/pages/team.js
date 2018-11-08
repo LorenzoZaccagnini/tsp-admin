@@ -6,8 +6,6 @@ import pic04 from '../assets/images/pic04.jpg'
 import loadingGif from '../assets/images/loading.gif'
 import { db } from '../components/firebase/firebase'
 
-let wh = window.innerHeight / 2
-let ww = window.innerWidth / 2
 
 
 class Team extends React.Component {
