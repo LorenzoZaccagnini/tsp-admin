@@ -6,8 +6,13 @@ import pic04 from '../assets/images/pic04.jpg'
 import loadingGif from '../assets/images/loading.gif'
 import { db } from '../components/firebase/firebase'
 
+let wh = window.innerHeight / 2
+let ww = window.innerWidth / 2
+
 
 class Team extends React.Component {
+
+
 
   constructor(props) {
   super(props);
@@ -21,11 +26,14 @@ class Team extends React.Component {
 
   componentDidMount () {
     this.loadTeam()
+
   }
+
+
 
   loadTeam = () => {
     db.ref("users")
-    .orderByChild('public').equalTo(true)
+    .orderByChild('approved_public').equalTo('true_true')
     .once('value')
     .then(snapshot => {
       let list = [];
