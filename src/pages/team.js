@@ -38,9 +38,7 @@ class Team extends React.Component {
       for(var key in snapshot.val()){
         let tempObj = snapshot.val()[key];
         tempObj.key = key;
-        if (tempObj.approved) {
-          list.push(tempObj)
-        }
+        list.push(tempObj)
       }
       this.setState({
         team: list,
