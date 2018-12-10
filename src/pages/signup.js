@@ -80,7 +80,9 @@ class SignUpForm extends React.Component {
               avatarURL: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
               public: false,
               approved: false,
-              approved_public: 'false_false'
+              approved_public: 'false_false',
+              user_role: 'moderator',
+              signup_date: Date.now()
             })
             .then(_ => {
               navigate('/account')
